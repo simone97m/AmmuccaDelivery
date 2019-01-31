@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">AmmuccaDelivery</string>
+    <string name="email_hint">Inserisci email</string>
+    <string name="password_hint">Inserisci password</string>
+    <string name="button_text_registazione">Registrazione</string>
+    <string name="button_text_login">Login</string>
+    <string name="password_hint_conferma">Conferma password</string>
+    <string name="login">Login</string>
+    <string name="checkout">checkout</string>
 </resources>
