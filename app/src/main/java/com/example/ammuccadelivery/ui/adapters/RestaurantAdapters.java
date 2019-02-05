@@ -18,6 +18,7 @@ import java.util.ArrayList;
 public class RestaurantAdapters extends RecyclerView.Adapter {
     private LayoutInflater inflater;
     private ArrayList<Restaurant> data;
+    private boolean isGrid;
 
     public RestaurantAdapters(Context context,ArrayList<Restaurant> data){
        inflater = LayoutInflater.from(context);
@@ -26,7 +27,8 @@ public class RestaurantAdapters extends RecyclerView.Adapter {
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        View view = inflater.inflate(R.layout.item_restaurant,viewGroup,false);
+        int layout = isGrid ? R.layout.item_restaurant_griglia : R.layout.item_restaurant;
+        View view = inflater.inflate(layout,viewGroup,false);
         return new RestaurantViewHolder(view);
     }
 
@@ -42,6 +44,14 @@ public class RestaurantAdapters extends RecyclerView.Adapter {
     @Override
     public int getItemCount() {
         return data.size();
+    }
+
+    public boolean isGrid() {
+        return isGrid;
+    }
+
+    public void setGrid(boolean grid) {
+        isGrid = grid;
     }
 
     public class RestaurantViewHolder extends RecyclerView.ViewHolder{

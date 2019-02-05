@@ -6,5 +6,7 @@
     <string name="button_text_login">Login</string>
     <string name="password_hint_conferma">Conferma password</string>
     <string name="login">Login</string>
-    <string name="checkout">checkout</string>
+    <string name="checkout">Checkout</string>
+    <string name="registrazione">Registrazione</string>
+    <string name="menu_griglia">Menù a griglia</string>
 </resources>
