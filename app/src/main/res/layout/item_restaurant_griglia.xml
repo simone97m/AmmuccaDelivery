@@ -7,37 +7,42 @@
     app:cardElevation="@dimen/cardview_default_elevation"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    app:cardCornerRadius="15dp">
+    app:cardCornerRadius="30dp"
+    android:clickable="true"
+    android:focusable="true"
+    android:foreground="?android:attr/selectableItemBackground"
+    android:id="@+id/menu_cardView">
 
     <LinearLayout
         android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/greendecente"
         android:orientation="vertical"
-        android:padding="5dp"
-        android:background="@color/Secondary"
-        android:layout_height="match_parent">
+        android:padding="5dp">
 
         <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="120dp"
             android:id="@+id/logo_restaurant"
+            android:layout_width="wrap_content"
+            android:layout_height="160dp"
             android:layout_gravity="center_vertical"
+            android:background="@drawable/bck_rounded"
             android:scaleType="centerCrop"
-            tools:src="@drawable/ic_launcher_background"/>
+            tools:src="@drawable/ic_launcher_background" />
 
         <TextView
+            android:id="@+id/nome_ristorante"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="20dp"
             android:gravity="center_vertical"
-            android:id="@+id/nome_ristorante" />
+            android:textSize="20dp" />
 
 
         <TextView
+            android:id="@+id/via_ristorante"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="20dp"
             android:gravity="center_vertical"
-            android:id="@+id/via_ristorante" />
+            android:textSize="20dp" />
 
 
         <TextView
@@ -45,11 +50,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
-            android:visibility="gone"
-            android:textSize="20dp" />
-
-
-
+            android:textSize="20dp"
+            android:textColor="@color/colorAccent"/>
 
 
     </LinearLayout>

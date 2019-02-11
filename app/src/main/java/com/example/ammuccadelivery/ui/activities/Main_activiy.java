@@ -1,6 +1,4 @@
 package com.example.ammuccadelivery.ui.activities;
-
-import android.content.ClipData;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -10,11 +8,9 @@ import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-
 import com.example.ammuccadelivery.R;
 import com.example.ammuccadelivery.dataModels.Restaurant;
 import com.example.ammuccadelivery.ui.adapters.RestaurantAdapters;
-
 import java.util.ArrayList;
 
 public class Main_activiy extends AppCompatActivity {
@@ -29,7 +25,6 @@ public class Main_activiy extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         restaurantRV = findViewById(R.id.places_rv);
         layoutManager = new LinearLayoutManager(this);
-        //layoutManager = new GridLayoutManager(this,2);
         adapters = new RestaurantAdapters(this,getData());
 
         restaurantRV.setLayoutManager(layoutManager);
@@ -38,7 +33,7 @@ public class Main_activiy extends AppCompatActivity {
 
     private ArrayList<Restaurant> getData(){
         arrayList = new ArrayList<>();
-        Restaurant mc = new Restaurant(8,"Ristorante: McDonald's","Via Tiburtina", R.drawable.mcdonalds);
+        Restaurant mc = new Restaurant(8,"Ristorante: McDonald's","Via Tiburtina", R.drawable.mcdonalds_2018);
         Restaurant bk = new Restaurant(8,"Ristorante: Burger King","Via tiburtina",R.drawable.burgerking);
         Restaurant mond = new Restaurant(10,"Ristorante: 100 Mondadidos","Via Tiburtina",R.drawable.mondadidoss);
         Restaurant ck = new Restaurant(6,"Ristorante: Ciro Kebab","Via Tiburtina",R.drawable.cirokebab);
@@ -74,6 +69,8 @@ public class Main_activiy extends AppCompatActivity {
             layoutManager =adapters.isGrid() ? new GridLayoutManager(this,2) : new LinearLayoutManager(this);
             restaurantRV.setLayoutManager(layoutManager);
             restaurantRV.setAdapter(adapters);
+        }else if(item.getItemId()==R.id.menu_carello){
+            startActivity(new Intent(this,ShopActivity.class));
         }
         return super.onOptionsItemSelected(item);
     }

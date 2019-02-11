@@ -9,4 +9,10 @@
     <string name="checkout">Checkout</string>
     <string name="registrazione">Registrazione</string>
     <string name="menu_griglia">Menù a griglia</string>
+    <string name="logo_shop">Shop</string>
+    <string name="button_visual">Vedi menu</string>
+    <string name="ristorante">Ristorante</string>
+    <string name="mcdonalds">McDonald\'s</string>
+    <string name="via_tib">Via Tiburtina</string>
+    <string name="total">Totale</string>
 </resources>

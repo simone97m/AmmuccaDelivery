@@ -3,17 +3,22 @@ package com.example.ammuccadelivery.dataModels;
 import android.media.Image;
 import android.support.annotation.DrawableRes;
 
+import java.util.ArrayList;
+
 public class Restaurant {
     private float minOrdine = 8;
     private String nome;
     private String via;
     private @DrawableRes int logo;
 
+    private ArrayList<Prodotto> prodotto;
+
     public Restaurant(float minOrdine, String nome, String via,@DrawableRes int logo) {
         this.minOrdine = minOrdine;
         this.nome = nome;
         this.via = via;
         this.logo = logo;
+        this.prodotto = new ArrayList<>();
     }
 
     public float getMinOrdine() {
@@ -46,5 +51,12 @@ public class Restaurant {
 
     public void setLogo(@DrawableRes int logo) {
         this.logo = logo;
+    }
+
+    public ArrayList<Prodotto> getProdotto(){
+        return prodotto;
+    }
+    public void setProdotto(ArrayList<Prodotto> prodotto){
+        this.prodotto=prodotto;
     }
 }
