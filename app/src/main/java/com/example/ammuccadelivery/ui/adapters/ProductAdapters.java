@@ -25,13 +25,10 @@ public class ProductAdapters extends RecyclerView.Adapter {
 
         this.data = data;
         mInflter = LayoutInflater.from(context);
-
-
     }
 
     public interface OnQuanityChangedListener {
         void onChange(float price);
-
     }
 
     public OnQuanityChangedListener getOnQuanityChangedListener() {
@@ -51,7 +48,6 @@ public class ProductAdapters extends RecyclerView.Adapter {
 
         View v = mInflter.inflate(R.layout.item_product, viewGroup, false);
         return new ProductViewHolder(v);
-
     }
 
     @Override
@@ -62,8 +58,6 @@ public class ProductAdapters extends RecyclerView.Adapter {
         vh.productName.setText(product.getNome());
         vh.productPrice.setText(String.valueOf(product.getPrezzo()));
         vh.productQty.setText(String.valueOf(product.getQuantita()));
-
-
     }
 
     @Override
@@ -101,7 +95,6 @@ public class ProductAdapters extends RecyclerView.Adapter {
         public void onClick(View view) {
             Prodotto product = data.get(getAdapterPosition());
 
-
             if (view.getId() == R.id.add_btn) {
                 product.increaseQuantita();
                 notifyItemChanged(getAdapterPosition());
@@ -112,11 +105,7 @@ public class ProductAdapters extends RecyclerView.Adapter {
                 product.decreaseQuantita();
                 notifyItemChanged(getAdapterPosition());
                 onQuanityChangedListener.onChange(product.getPrezzo() * -1);
-
-
             }
-
-
         }
     }
 }

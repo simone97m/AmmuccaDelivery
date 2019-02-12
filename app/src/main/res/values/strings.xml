@@ -15,4 +15,11 @@
     <string name="mcdonalds">McDonald\'s</string>
     <string name="via_tib">Via Tiburtina</string>
     <string name="total">Totale</string>
+    <string name="prova">Prova</string>
+    <string name="pay">Pagamento</string>
+    <string name="Conferma">confirm</string>
+    <string name="confirm">conferma</string>
+    <string name="remove_title">Are you sure?</string>
+    <string name="be_careful">Be careful</string>
+    <string name="cancel">Cancel</string>
 </resources>

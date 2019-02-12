@@ -1,11 +1,12 @@
 package com.example.ammuccadelivery.ui.activities;
 
 
-import android.support.annotation.DrawableRes;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -20,7 +21,7 @@ import com.example.ammuccadelivery.ui.adapters.ProductAdapters;
 
 import java.util.ArrayList;
 
-public class ShopActivity extends AppCompatActivity implements ProductAdapters.OnQuanityChangedListener{
+public class ShopActivity extends AppCompatActivity implements ProductAdapters.OnQuanityChangedListener, View.OnClickListener{
 
     // UI components
     private TextView shopNameTv, shopAddress, totalTxtView;
@@ -41,6 +42,7 @@ public class ShopActivity extends AppCompatActivity implements ProductAdapters.O
     private float total = 0;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,6 +56,7 @@ public class ShopActivity extends AppCompatActivity implements ProductAdapters.O
         checkout = findViewById(R.id.checkout);
         progressBar = findViewById(R.id.progress);
         productRv = findViewById(R.id.product_rv);
+        checkout.setOnClickListener(this);
 
         restaurant = getRestaurant();
         //restaurant.setImageUrl("https://rovato5stelle.files.wordpress.com/2013/11/mcdonald.jpg");
@@ -94,6 +97,11 @@ public class ShopActivity extends AppCompatActivity implements ProductAdapters.O
     private void updateTotal(float item){
         total= total + item;
         totalTxtView.setText("Total: ".concat( String.valueOf(total)));
+        if(total >= restaurant.getMinOrdine()){
+            checkout.setEnabled(true);
+        }else{
+            checkout.setEnabled(false);
+        }
     }
 
     private void updateProgress(int progress){
@@ -104,5 +112,13 @@ public class ShopActivity extends AppCompatActivity implements ProductAdapters.O
     public void onChange(float price) {
         updateTotal(price);
         updateProgress((int)total*100);
+    }
+
+    @Override
+    public void onClick(View v) {
+        if(v.getId()==R.id.checkout){
+            Intent intent = new Intent(this, CheckoutActivity.class);
+            startActivity(intent);
+        }
     }
 }
