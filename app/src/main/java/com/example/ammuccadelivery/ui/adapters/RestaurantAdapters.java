@@ -32,6 +32,10 @@ public class RestaurantAdapters extends RecyclerView.Adapter implements View.OnC
        this.data = data;
        this.context= context;
     }
+    public RestaurantAdapters(Context context){
+        new RestaurantAdapters(context,new ArrayList<Restaurant>());
+    }
+
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
@@ -42,6 +46,10 @@ public class RestaurantAdapters extends RecyclerView.Adapter implements View.OnC
         return new RestaurantViewHolder(view);
     }
 
+    public void setData(ArrayList<Restaurant> data){
+        this.data = data;
+        notifyDataSetChanged();
+    }
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, int position) {
         RestaurantViewHolder vh = (RestaurantViewHolder) viewHolder;

@@ -3,6 +3,9 @@ package com.example.ammuccadelivery.dataModels;
 import android.media.Image;
 import android.support.annotation.DrawableRes;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 
 public class Restaurant {
@@ -10,7 +13,9 @@ public class Restaurant {
     private String nome;
     private String via;
     private @DrawableRes int logo;
+    private String imageUrl;
 
+    public static final String ENDPOIN = "restaurants";
     private ArrayList<Prodotto> prodotto;
 
     public Restaurant(float minOrdine, String nome, String via,@DrawableRes int logo) {
@@ -19,6 +24,12 @@ public class Restaurant {
         this.via = via;
         this.logo = logo;
         this.prodotto = new ArrayList<>();
+    }
+    public Restaurant(JSONObject jasonobject) throws JSONException {
+        nome = jasonobject.getString("name");
+        via = jasonobject.getString("address");
+        minOrdine = Float.valueOf(jasonobject.getString("min_order"));
+        imageUrl = jasonobject.getString("image_url");
     }
 
     public float getMinOrdine() {

@@ -2,26 +2,38 @@ package com.example.ammuccadelivery.ui.activities;
 
 
 import android.content.Intent;
+import android.nfc.Tag;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
 import com.bumptech.glide.Glide;
 import com.example.ammuccadelivery.R;
 import com.example.ammuccadelivery.dataModels.Prodotto;
 import com.example.ammuccadelivery.dataModels.Restaurant;
+import com.example.ammuccadelivery.services.RestController;
 import com.example.ammuccadelivery.ui.adapters.ProductAdapters;
 
 
+import org.json.JSONArray;
+import org.json.JSONException;
+
 import java.util.ArrayList;
 
-public class ShopActivity extends AppCompatActivity implements ProductAdapters.OnQuanityChangedListener, View.OnClickListener{
+public class ShopActivity extends AppCompatActivity implements ProductAdapters.OnQuanityChangedListener, View.OnClickListener/*,Response.Listener<String>,Response.ErrorListener*/{
+
+
+    private static final String TAG = ShopActivity.class.getSimpleName();
 
     // UI components
     private TextView shopNameTv, shopAddress, totalTxtView;
@@ -40,6 +52,12 @@ public class ShopActivity extends AppCompatActivity implements ProductAdapters.O
 
 
     private float total = 0;
+
+    private RestController restController;
+    ArrayList<Restaurant> arrayList;
+
+
+
 
 
 
@@ -73,6 +91,9 @@ public class ShopActivity extends AppCompatActivity implements ProductAdapters.O
 
         productRv.setLayoutManager(layoutManager);
         productRv.setAdapter(adapter);
+
+        restController = new RestController(this);
+        //restController.getRequest(Restaurant.ENDPOIN,this,this);
 
 
     }
@@ -121,4 +142,24 @@ public class ShopActivity extends AppCompatActivity implements ProductAdapters.O
             startActivity(intent);
         }
     }
+
+    /*@Override
+    public void onErrorResponse(VolleyError error) {
+        Log.e(TAG,error.getMessage());
+        Toast.makeText(this,error.getMessage(),Toast.LENGTH_LONG).show();
+
+    }
+
+    @Override
+    public void onResponse(String response) {
+        try {
+           JSONArray jsonArray = new JSONArray(response);
+            for (int i = 0; i<jsonArray.length(); i++){
+                arrayList.add(new Restaurant(jsonArray.getJSONObject(i)));
+            }
+            adapter.setData(arrayList);
+        } catch (JSONException e) {
+                Log.e(TAG,e.getMessage());
+            }
+    }*/
 }
